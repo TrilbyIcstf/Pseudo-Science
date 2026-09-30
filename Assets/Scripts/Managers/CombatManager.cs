@@ -68,7 +68,7 @@ public class CombatManager : MonoBehaviour
             int enemyVarient = _enc.EnemyVarients[i];
             GameObject enemyObject = GameManager.instance.ll.enemyRepository.GetValue(enemyType);
             activeEnemies.Add(new ActiveEnemy(Instantiate(enemyObject, enemyHolderPos)));
-            activeEnemies[i].enemyObject.transform.position += _enc.EnemyPositions[i];
+            activeEnemies[i].enemyObject.GetComponent<RectTransform>().anchoredPosition += _enc.EnemyPositions[i];
             activeEnemies[i].EnemySetup(i, enemyVarient);
         }
 

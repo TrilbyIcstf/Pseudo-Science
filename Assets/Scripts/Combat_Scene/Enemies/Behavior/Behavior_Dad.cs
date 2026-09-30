@@ -24,7 +24,6 @@ public abstract class Behavior_Dad : MonoBehaviour
     /// </returns>
     public abstract (GameObject, TargetingType, int, int, float) MakeMove();
 
-    protected abstract int GetBaseSpeed();
     public abstract int GenerateBaseIntent();
 
     public virtual List<int> CustomTargeting()

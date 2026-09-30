@@ -173,6 +173,8 @@ MonoBehaviour:
     keyValuePairs:
     - key: 1003
       value: {fileID: 6667548592260005386, guid: 97892a498de9c974a88833ac53dcbe87, type: 3}
+    - key: 1001
+      value: {fileID: 1534891819882741467, guid: 6f79f1f74a39bd248840399e3cac3c51, type: 3}
   tileSprites:
     keyValuePairs:
     - key: 99

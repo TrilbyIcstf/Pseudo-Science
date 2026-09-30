@@ -18,7 +18,7 @@ MonoBehaviour:
     encounter: {fileID: 11400000, guid: 7a6ce94ebfe6cb3469ff69bed9b073c7, type: 2}
     piece: 3
   - pos: {x: 1, y: 5}
-    encounter: {fileID: 11400000, guid: 268cf84be5dc4654fb6c4f0f49ff7306, type: 2}
+    encounter: {fileID: 11400000, guid: 52189894e76187e4b9496fbdf6b6238b, type: 2}
     piece: 4
   doorConnections:
     keyValuePairs:

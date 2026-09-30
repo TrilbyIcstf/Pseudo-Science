@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Stained_Knight_Behavior : Behavior_Dad
@@ -28,16 +27,6 @@ public class Stained_Knight_Behavior : Behavior_Dad
         GameObject moveObject = GameManager.instance.ll.enemyMoveRepository.GetValue(currentIntent.Move);
 
         return (moveObject, currentIntent.TargetingType, currentIntent.Targets, speed, currentIntent.Potency);
-    }
-
-    protected override int GetBaseSpeed()
-    {
-        switch (varient)
-        {
-            case 0: return 3;
-            case 1: return 6;
-            default: return 0;
-        }
     }
 
     public override int GenerateBaseIntent()

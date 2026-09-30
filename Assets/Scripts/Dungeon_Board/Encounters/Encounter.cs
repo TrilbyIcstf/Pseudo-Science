@@ -17,11 +17,11 @@ public class Encounter : ScriptableObject
 
     // A list of where each enemy's portrait will be displayed
     [SerializeField] 
-    private List<Vector3> enemyPositions;
+    private List<Vector2> enemyPositions;
 
     public List<Bestiary> EncounterEnemies { get => encounterContents.Select(e => e.enemy).ToList(); }
     public List<int> EnemyVarients { get => encounterContents.Select(e => e.varient).ToList(); }
-    public List<Vector3> EnemyPositions { get => enemyPositions; }
+    public List<Vector2> EnemyPositions { get => enemyPositions; }
 
     [Serializable]
     private struct EnemyTuple
