@@ -44,14 +44,26 @@ public abstract class Particle_Controller_Dad : MonoBehaviour
         GameManager.instance.combat.GetEnemy(target).TakeDisplayDamage(damage);
     }
 
-    public virtual void RegisterTempDamage(GameObject messenger, BarChangeDetails details, int target)
+    public virtual void RegisterTempDamage(GameObject messenger, BarChangeDetails details, int target, Target type)
     {
-        GameManager.instance.combat.GetEnemy(target).RegisterDisplayDamage(messenger, details);
+        if (type == Target.ENEMY)
+        {
+            GameManager.instance.combat.GetEnemy(target).RegisterDisplayDamage(messenger, details);
+        } else
+        {
+            GameManager.instance.combat.combatUI.PlayerUI[target].HealthScript.RegisterChange(messenger, details);
+        }
     }
 
-    public virtual void ApplyTempDamage(GameObject messenger, int target)
+    public virtual void ApplyTempDamage(GameObject messenger, int target, Target type)
     {
-        GameManager.instance.combat.GetEnemy(target).ApplyDisplayDamage(messenger);
+        if (type == Target.ENEMY)
+        {
+            GameManager.instance.combat.GetEnemy(target).ApplyDisplayDamage(messenger);
+        } else
+        {
+            GameManager.instance.combat.combatUI.PlayerUI[target].HealthScript.ApplyChange(messenger);
+        }
     }
 
     public void AddParticle(GameObject newParticle)

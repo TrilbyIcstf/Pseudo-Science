@@ -15,10 +15,10 @@ MonoBehaviour:
   mapImage: {fileID: 2800000, guid: d1d0d18c14ee3e84abfed6a723342149, type: 3}
   baseEnemies:
   - pos: {x: 1, y: 2}
-    encounter: {fileID: 11400000, guid: 7a6ce94ebfe6cb3469ff69bed9b073c7, type: 2}
+    encounter: {fileID: 11400000, guid: 52189894e76187e4b9496fbdf6b6238b, type: 2}
     piece: 4
   - pos: {x: 4, y: 7}
-    encounter: {fileID: 11400000, guid: 7a6ce94ebfe6cb3469ff69bed9b073c7, type: 2}
+    encounter: {fileID: 11400000, guid: 1270ba9872595df4d8df99a312a5b591, type: 2}
     piece: 5
   doorConnections:
     keyValuePairs:

@@ -105,9 +105,15 @@ public enum StatusEffect
     MINORPOWERUP = 1001,
     MIDPOWERUP = 1002,
     MAJORPOWERUP = 1003,
+    MINORBLOCKUP = 1004,
+    MIDBLOCKUP = 1005,
+    MAJORBLOCKUP = 1006,
     MINORPOWERDOWN = 2001,
     MIDPOWERDOWN = 2002,
     MAJORPOWERDOWN = 2003,
+    MINORBLOCKDOWN = 2004,
+    MIDBLOCKDOWN = 2005,
+    MAJORBLOCKDOWN = 2006,
     WARMUP = 9901,
 }
 
@@ -333,6 +339,7 @@ public enum EnemyMoveName
     // Air spells
 
     // Earth spells
+    TremorBreak = 1601,
 
     // Healing spells
 

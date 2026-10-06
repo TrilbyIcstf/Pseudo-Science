@@ -36,7 +36,8 @@ public class Bullet_Spray_Particle_Controller : Particle_Controller_Dad
                 int tempDamage = damage + (i < remainder ? 1 : 0);
                 BarChangeDetails barDetails = new BarChangeDetails(tempDamage, target.Effectiveness, false);
                 GameObject tempParticle = Instantiate(bulletParticle, spawnPosition, Quaternion.identity);
-                tempParticle.GetComponent<Particle_Chaser_Damage>().ParticleInitialize(goalPosition, targets[0].TargetNum, 0.2f, 1.001f, directions[i], 0.05f, 0.7f, barDetails, lifeSpan, this);
+                tempParticle.GetComponent<SpriteRenderer>().color = bulletColor;
+                tempParticle.GetComponent<Particle_Chaser_Damage>().ParticleInitialize(goalPosition, target.TargetNum, target.TargetType, 0.2f, 1.001f, directions[i], 0.05f, 0.7f, barDetails, lifeSpan, this);
                 yield return new WaitForSeconds(spawnDelay);
             }
         }
@@ -49,12 +50,11 @@ public class Bullet_Spray_Particle_Controller : Particle_Controller_Dad
         Destroy(gameObject);
     }
 
-    public void Setup(Vector2 sp, Vector2 gp, Player_Move papa, List<MoveResult> targets, int numberToSpawn, float potency)
+    public void Setup(Vector2 sp, Vector2 gp, Move_Dad papa, List<MoveResult> targets, int numberToSpawn)
     {
         spawnPosition = sp;
         goalPosition = gp;
         this.numberToSpawn = numberToSpawn;
-        bulletParticle.GetComponent<SpriteRenderer>().color = bulletColor;
         base.Setup(papa, targets);
     }
 

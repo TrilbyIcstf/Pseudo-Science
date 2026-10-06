@@ -20,8 +20,8 @@ public class Book_Rat_Behavior : Behavior_Dad
                 intent = new EnemyMoveIntent(EnemyMoveName.SparkBurst, MoveType.MAGICAL, TargetingType.LowestHealth, 4, 55);
                 break;
             case 2:
-                speed = 8;
-                intent = new EnemyMoveIntent(EnemyMoveName.SparkBurst, MoveType.MAGICAL, TargetingType.Random, 1, 125);
+                speed = 4;
+                intent = new EnemyMoveIntent(EnemyMoveName.TremorBreak, MoveType.DEBUFF, TargetingType.Random, 1, 25);
                 break;
             default: throw new System.NotImplementedException();
         }
@@ -38,15 +38,15 @@ public class Book_Rat_Behavior : Behavior_Dad
         {
             case 0:
                 speed = 2;
-                intent = new EnemyMoveIntent(EnemyMoveName.BasicSlash, MoveType.PHYSICAL, TargetingType.Random, 1, 55);
+                intent = new EnemyMoveIntent(EnemyMoveName.BasicSlash, MoveType.PHYSICAL, TargetingType.Random, 1, 35);
                 break;
             case 1:
                 speed = 4;
-                intent = new EnemyMoveIntent(EnemyMoveName.SparkBurst, MoveType.MAGICAL, TargetingType.LowestHealth, 4, 85);
+                intent = new EnemyMoveIntent(EnemyMoveName.SparkBurst, MoveType.MAGICAL, TargetingType.LowestHealth, 4, 55);
                 break;
             case 2:
-                speed = 5;
-                intent = new EnemyMoveIntent(EnemyMoveName.SparkBurst, MoveType.MAGICAL, TargetingType.Random, 1, 185);
+                speed = 2;
+                intent = new EnemyMoveIntent(EnemyMoveName.TremorBreak, MoveType.DEBUFF, TargetingType.Random, 1, 25);
                 break;
             default: throw new System.NotImplementedException();
         }

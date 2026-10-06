@@ -227,12 +227,14 @@ public class CombatManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
 
-        EndTurn();
+        if (!IncrementEnemyTurn())
+        {
+            EndTurn();
+        }
     }
 
     private void EndTurn()
     {
-        IncrementEnemyTurn();
         CountDownStatus();
         turnCount++;
     }
@@ -289,6 +291,7 @@ public class CombatManager : MonoBehaviour
         move.EndMove((int)queuedMove.user);
         move.ApplyMove(user, results, move.MoveInfo);
         Combat_UI_Commands.RefreshHealthBars();
+        Combat_UI_Commands.UpdateStatusIcons();
 
         queueDelay = move.DelayOverride ?? MOVEQUEUEDEFAULTDELAY;
         Destroy(controller);
@@ -306,6 +309,7 @@ public class CombatManager : MonoBehaviour
     {
         moveQueueActive = false;
         board.MouseLock = false;
+        EndTurn();
     }
 
     private IEnumerator RunEnemyQueue()
@@ -330,6 +334,8 @@ public class CombatManager : MonoBehaviour
                 yield return new WaitUntil(() => move.IsMoveFinished());
                 move.EndMove(user);
                 move.ApplyMove(enemy, results);
+                Combat_UI_Commands.RefreshHealthBars();
+                Combat_UI_Commands.UpdateStatusIcons();
                 Destroy(controller);
                 yield return new WaitUntil(() => !this.deathAnimationLock);
 
@@ -389,7 +395,7 @@ public class CombatManager : MonoBehaviour
         return targets;
     }
 
-    public void IncrementEnemyTurn()
+    public bool IncrementEnemyTurn()
     {
         for (int i = 0; i < activeEnemies.Count; i++)
         {
@@ -411,7 +417,9 @@ public class CombatManager : MonoBehaviour
         if (enemyMoveQueue.Count > 0)
         {
             StartEnemyQueue();
+            return true;
         }
+        return false;
     }
 
     private void CountDownStatus()
