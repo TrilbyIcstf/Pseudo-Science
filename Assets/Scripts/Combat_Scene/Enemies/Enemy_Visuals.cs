@@ -137,6 +137,11 @@ public class Enemy_Visuals : MonoBehaviour
         turnNumber.SetIntent(val);
     }
 
+    public void SetTurnEnemy(Bestiary val)
+    {
+        turnNumber.SetEnemy(val);
+    }
+
     public void SetHealthBarHeight(float height)
     {
         healthBar.SetHeight(height);

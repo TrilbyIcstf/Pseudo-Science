@@ -169,6 +169,24 @@ public enum MoveType
     BOARD
 }
 
+public static class MoveTypeExtensions
+{
+    public static string ToDisplayString(this MoveType val)
+    {
+        switch(val)
+        {
+            case MoveType.NULL: return "undefined skill";
+            case MoveType.PHYSICAL: return "physical attack";
+            case MoveType.MAGICAL: return "magical attack";
+            case MoveType.HEALING: return "recovery skill";
+            case MoveType.BUFF: return "buff skill";
+            case MoveType.DEBUFF: return "debuff skill";
+            case MoveType.BOARD: return "board altering skill";
+            default: return "";
+        }
+    }
+}
+
 public enum PlayerClass
 {
     HERO,

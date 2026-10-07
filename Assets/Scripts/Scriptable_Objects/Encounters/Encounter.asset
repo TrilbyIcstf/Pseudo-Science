@@ -20,6 +20,6 @@ MonoBehaviour:
   - enemy: 1003
     varient: 0
   enemyPositions:
-  - {x: -3.8, y: 3.6, z: 0}
-  - {x: -0.35, y: 2.94, z: 0}
-  - {x: 3.36, y: 3.88, z: 0}
+  - {x: -204, y: 174}
+  - {x: -11, y: 142}
+  - {x: 197, y: 191}

@@ -64,7 +64,20 @@ public class MoveNameDictionary : GenericDictionary<MoveName, GameObject>
 public class EnemyMoveNameDictionary : GenericDictionary<EnemyMoveName, GameObject> { }
 
 [Serializable]
-public class BestiaryDictionary : GenericDictionary<Bestiary, GameObject> { }
+public class BestiaryDictionary : GenericDictionary<Bestiary, GameObject> 
+{
+    public Enemy_Information GetInformation(Bestiary key)
+    {
+        GameObject value = GetValue(key);
+        if (value != null)
+        {
+            return value.GetComponent<Combat_Enemy>().EnemyBase;
+        }
+
+        return null;
+    }
+    
+}
 
 [Serializable]
 public class TileSpriteDictionary : GenericDictionary<TColor, Sprite> { }

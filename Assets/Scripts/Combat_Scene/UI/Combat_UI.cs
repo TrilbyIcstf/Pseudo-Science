@@ -10,9 +10,11 @@ public class Combat_UI : MonoBehaviour
     public Enemy_Crosshair crosshairScript;
     public Hover_Crosshair hoverScript;
 
-    [Header("Details Box")]
+    [Header("Text Boxes")]
     [SerializeField]
     private Move_Details_Box detailsBox;
+    [SerializeField]
+    private Combat_Text_Box_UI textBox;
 
     [Header("Text")]
     [SerializeField]
@@ -46,6 +48,17 @@ public class Combat_UI : MonoBehaviour
     public void HideMoveDetails()
     {
         detailsBox.gameObject.SetActive(false);
+    }
+
+    public void DisplayTextBox(string title, string description)
+    {
+        textBox.gameObject.SetActive(true);
+        textBox.SetText(title, description);
+    }
+
+    public void HideTextBox()
+    {
+        textBox.gameObject.SetActive(false);
     }
 
     public void TargetCrosshair(Vector2 target)

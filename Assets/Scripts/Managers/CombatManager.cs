@@ -650,7 +650,7 @@ public class CombatManager : MonoBehaviour
             speed = enemyBehavior.GenerateBaseIntent();
             enemyVisuals.SetTurnNumber(speed);
             enemyVisuals.SetIntent(enemyBehavior.IntentType);
-
+            enemyVisuals.SetTurnEnemy(enemyScript.EnemyBase.EnemyType);
         }
     }
 }

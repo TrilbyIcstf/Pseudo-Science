@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Combat_Enemy : MonoBehaviour
 {
     // The template for the enemy
-    public Enemy_Information enemyBase;
+    [SerializeField]
+    private Enemy_Information enemyBase;
 
     private Enemy_Stats stats;
 
@@ -127,4 +128,6 @@ public class Combat_Enemy : MonoBehaviour
     {
         return alive;
     }
+
+    public Enemy_Information EnemyBase { get => enemyBase; }
 }
