@@ -372,9 +372,13 @@ public enum EnemyMoveName
 
 public enum Bestiary
 {
+    // Normal enemies
     BookRat = 1001,
     KnickedSkeleton = 1002,
     StainedKnight = 1003,
+
+    // Bosses
+    WestminsterTheRed = 9001,
 }
 
 public enum CombatAnimation

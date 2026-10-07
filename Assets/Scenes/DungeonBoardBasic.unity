@@ -580,8 +580,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23310f68ce761cf409fa06f7a4b55f33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dungeon_Board_Controller
-  testEncounter: {fileID: 11400000, guid: 7a6ce94ebfe6cb3469ff69bed9b073c7, type: 2}
-  testEncounter2: {fileID: 11400000, guid: 268cf84be5dc4654fb6c4f0f49ff7306, type: 2}
 --- !u!4 &1551120114
 Transform:
   m_ObjectHideFlags: 0

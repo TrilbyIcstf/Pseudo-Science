@@ -165,6 +165,7 @@ MonoBehaviour:
   - {fileID: 4735513821708137813, guid: 40122b95f7366b44794ac2e81a32c7f3, type: 3}
   - {fileID: 9094150279318028259, guid: 76ebd974a0f359045813c0a61566f610, type: 3}
   fallingTile: {fileID: 5244758746631787670, guid: adb88da36dd183643860d85d6fcef209, type: 3}
+  reminderTileBase: {fileID: 9091693892466881395, guid: 5016228568619b148a5d5d8e51432c15, type: 3}
 --- !u!4 &38620144
 Transform:
   m_ObjectHideFlags: 0

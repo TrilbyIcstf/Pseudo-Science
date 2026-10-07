@@ -27,7 +27,7 @@ public class Glancing_Blow_Move : Generic_Player_Attack_Move
     private Dictionary<float, AnimDetails> AnimationTimes()
     {
         Dictionary<float, AnimDetails> animDict = new Dictionary<float, AnimDetails>();
-        animDict[0.3f] = new AnimDetails(CombatAnimation.ColorFlash, Target.NULL, -1, null, Color.red);
+        animDict[0.3f] = new AnimDetails(CombatAnimation.ColorFlash, Target.NULL, -1, null, Color_Vals.DamageRed);
         return animDict;
     }
 }

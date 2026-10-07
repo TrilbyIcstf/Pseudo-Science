@@ -36,7 +36,7 @@ public class Particle_Particle_System : Particle_Dad
 
                 BarChangeDetails barDetails = new BarChangeDetails((int)results.Potency, results.Effectiveness, false);
                 ApplyVisualDamage(results.TargetNum, type, barDetails);
-                father.SendAnimation(new AnimDetails(CombatAnimation.ColorFlash, type, results.TargetNum, null, Color.red));
+                father.SendAnimation(new AnimDetails(CombatAnimation.ColorFlash, type, results.TargetNum, null, Color_Vals.DamageRed));
             }
         }
     }

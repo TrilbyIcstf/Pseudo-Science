@@ -41,8 +41,11 @@ public class Combat_UI : MonoBehaviour
 
     public void DisplayMoveDetails(MoveName move)
     {
-        detailsBox.gameObject.SetActive(true);
-        detailsBox.SetDetails(move);
+        if (!GameManager.instance.combat.MoveQueueRunning())
+        {
+            detailsBox.gameObject.SetActive(true);
+            detailsBox.SetDetails(move);
+        }
     }
 
     public void HideMoveDetails()

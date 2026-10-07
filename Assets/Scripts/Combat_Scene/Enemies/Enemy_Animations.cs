@@ -21,7 +21,9 @@ public class Enemy_Animations : MonoBehaviour
     private Image spriteImage;
     private Color spriteColor;
 
-    private Color overlayColor = Color.black;
+    [SerializeField]
+    private Image overlay;
+    private Color overlayColor = Vector4.zero;
     public float overlayMultiplier = 0;
 
     // Transforms for self and sprite
@@ -61,12 +63,29 @@ public class Enemy_Animations : MonoBehaviour
 
         if (overlayMultiplier > 0)
         {
-            Color tempColor = spriteColor;
+            overlay.gameObject.SetActive(true);
+            /*Color tempColor = spriteColor;
             tempColor.r = spriteColor.r + (overlayColor.r - spriteColor.r) * overlayMultiplier;
             tempColor.g = spriteColor.g + (overlayColor.g - spriteColor.g) * overlayMultiplier;
             tempColor.b = spriteColor.b + (overlayColor.b - spriteColor.b) * overlayMultiplier;
-            spriteImage.color = tempColor;
+            spriteImage.color = tempColor;*/
+
+            Color tempColor = overlayColor;
+            tempColor.a *= overlayMultiplier;
+            overlay.color = tempColor;
         }
+    }
+
+    public IEnumerator PlayAnimationWait(AnimDetails anim)
+    {
+        CombatAnimation ea = anim.anim;
+        overlayColor = anim.color ?? Vector4.zero;
+        holderPos.rotation = Quaternion.Euler(0, 0, anim.rotation ?? 0);
+        spritePos.rotation = Quaternion.Euler(0, 0, 0);
+        animController.speed = anim.speed;
+        animController.SetTrigger(ea.ToAnimString());
+        yield return null;
+        yield return new WaitUntil(() => animController.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
     }
 
     public void PlayAnimation(CombatAnimation ea)
@@ -107,6 +126,7 @@ public class Enemy_Animations : MonoBehaviour
     public void ResetColor()
     {
         overlayMultiplier = 0;
+        overlay.gameObject.SetActive(false);
         spriteImage.color = spriteColor;
     }
 }

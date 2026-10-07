@@ -67,6 +67,11 @@ public class Enemy_Visuals : MonoBehaviour
         animController.PlayAnimation(ea);
     }
 
+    public IEnumerator PlayAnimationWait(AnimDetails anim)
+    {
+        yield return StartCoroutine(animController.PlayAnimationWait(anim));
+    }
+
     public void PlayAnimationRotated(CombatAnimation ea, float rotation)
     {
         animController.PlayAnimationRotated(ea, rotation);
@@ -82,6 +87,15 @@ public class Enemy_Visuals : MonoBehaviour
         GameObject DeathOverlay = Instantiate(deathMask, spriteObject.transform);
         yield return new WaitForSeconds(0.0f);
         callback();
+    }
+
+    public IEnumerator PlaySkillFlashAnimation(int count)
+    {
+        AnimDetails flashAnim = new AnimDetails(CombatAnimation.ColorFlash, Target.ENEMY, 0, null, Color.white, 1.5f);
+        for (int i = 0; i < count; i++)
+        {
+            yield return StartCoroutine(animController.PlayAnimationWait(flashAnim));
+        }
     }
 
     public Vector2 GetCenter()

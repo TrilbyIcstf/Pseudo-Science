@@ -14,7 +14,7 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private const float MOVEQUEUEDEFAULTDELAY = 1.0f;
+    private const float MOVEQUEUEDEFAULTDELAY = 0.5f;
 
     public Board_Controller board;
     public Combat_UI combatUI;
@@ -316,7 +316,7 @@ public class CombatManager : MonoBehaviour
     {
         if (enemyMoveQueue.Count > 0)
         {
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(MOVEQUEUEDEFAULTDELAY);
 
             while (enemyMoveQueue.Count > 0 && moveQueueActive)
             {
@@ -330,6 +330,8 @@ public class CombatManager : MonoBehaviour
 
                 List<int> targets = DecideEnemyTargets(queuedMove, behavior);
                 List<MoveResult> results = move.ResultsCalc(enemy, targets, queuedMove.potency);
+                yield return StartCoroutine(activeEnemies[user].enemyVisuals.PlaySkillFlashAnimation(2));
+                yield return new WaitForSeconds(0.25f);
                 move.StartMove(user, results);
                 yield return new WaitUntil(() => move.IsMoveFinished());
                 move.EndMove(user);

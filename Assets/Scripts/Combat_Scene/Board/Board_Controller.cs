@@ -62,6 +62,11 @@ public class Board_Controller : MonoBehaviour
     // Position of the mouse when it clicked on the tile
     private Vector3 mousePos;
 
+    // Leaves a reminder on the board of where the player initially clicked the tile
+    [SerializeField]
+    private GameObject reminderTileBase;
+    private GameObject reminderTile;
+
     // Determines if the mouse is attempting to move pieces verticaly or horizontaly
     private bool movingHorizontal = false;
     private bool movingVertical = false;
@@ -165,6 +170,7 @@ public class Board_Controller : MonoBehaviour
         {
             // Resets variables for moving pieces
             mouseDown = false;
+            Destroy(reminderTile);
 
             // Holds the total distance the mouse has moved while holding a tile, and how many spaces on the board that translates to
             float totDist = 0;
@@ -314,6 +320,10 @@ public class Board_Controller : MonoBehaviour
 
             activeTile[0] = posX;
             activeTile[1] = posY;
+
+            reminderTile = Instantiate(reminderTileBase);
+            reminderTile.transform.parent = tileDad.transform;
+            reminderTile.transform.position = board[posX, posY].transform.position;
         }
         
     }

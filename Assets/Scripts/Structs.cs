@@ -92,14 +92,16 @@ public struct AnimDetails
     public int target;
     public float? rotation;
     public Color? color;
+    public float speed;
 
-    public AnimDetails(CombatAnimation anim, Target targetType, int target, float? rotation, Color? color)
+    public AnimDetails(CombatAnimation anim, Target targetType, int target, float? rotation, Color? color, float speed = 1.0f)
     {
         this.anim = anim;
         this.targetType = targetType;
         this.target = target;
         this.rotation = rotation;
         this.color = color;
+        this.speed = speed;
     }
 }
 
