@@ -11,13 +11,18 @@ public class Hover_Crosshair : MonoBehaviour
     private Image crosshairImage;
     private static float loopTime = 1.5f;
 
+    private bool setup = false;
+
     public void Setup()
     {
         crosshairImage = gameObject.GetComponent<Image>();
+        setup = true;
     }
 
     public void FixedUpdate()
     {
+        if (!setup) { return; }
+
         animTimer += Time.deltaTime * 0.5f;
 
         crosshairAlpha = baseAlpha - (Mathf.Sin((animTimer / loopTime) * Mathf.PI) * 0.6f);
@@ -30,6 +35,8 @@ public class Hover_Crosshair : MonoBehaviour
 
     public void Update()
     {
+        if (!setup) { return; }
+
         float scaledAlpha = Mathf.Max(Mathf.Min(1.0f, crosshairAlpha), 0.5f);
 
         Color tempColor = crosshairImage.color;

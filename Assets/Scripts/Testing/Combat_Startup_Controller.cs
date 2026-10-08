@@ -14,16 +14,12 @@ public class Combat_Startup_Controller : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.instance.party.Setup();
-        GameManager.instance.party.ResetStatus(); // FOR TESTING
-
-        foreach (Player_UI_Controller playerUI in combatUI.PlayerUI)
+        /*foreach (Player_UI_Controller playerUI in combatUI.PlayerUI)
         {
             playerUI.Setup();
         }
         combatUI.Setup();
-        boardController.Setup();
-        //GameManager.instance.combat.CombatSetup(testEnemies);
+        boardController.Setup();*/
     }
 
     private void OnDrawGizmosSelected()

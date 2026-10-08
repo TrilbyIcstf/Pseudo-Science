@@ -29,11 +29,11 @@ public class Combat_UI : MonoBehaviour
 
     public void Setup()
     {
-        GameManager.instance.combat.SetCombatUI(this);
         crosshairScript.Setup();
         hoverScript.Setup();
         foreach (Player_UI_Controller controller in playerUI)
         {
+            controller.Setup();
             moveButtonControllers.Add(controller.Player, controller.Buttons);
             controller.StatusIcons.SetStatusList(GameManager.instance.party.GetPlayer(controller.Player).Status.StatusEffects);
         }

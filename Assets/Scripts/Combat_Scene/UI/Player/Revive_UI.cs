@@ -21,5 +21,7 @@ public class Revive_UI : Fill_Bar
     {
         progress = GameManager.instance.party.GetPlayer(playerColor).Status.ReviveProgress;
         max = Player_Status.REVIVECAP;
+
+        UpdateBar();
     }
 }

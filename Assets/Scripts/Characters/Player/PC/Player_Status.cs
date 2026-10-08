@@ -40,5 +40,5 @@ public class Player_Status : Character_Status
     public bool IsDead { get => isDead; set => isDead = value; }
     public float ReviveProgress { get => reviveProgress; set => reviveProgress = value; }
     public Dictionary<StatusEffect, int> StatusEffects { get => statusEffects; set => statusEffects = value; }
-    public bool KO { get => currentHealth > 0; }
+    public bool KO { get => currentHealth <= 0; }
 }

@@ -24,7 +24,7 @@ public class TransitionManager : MonoBehaviour
     private IEnumerator TransitionToEncounterCoroutine(Encounter encounter)
     {
         yield return StartCoroutine(fx.Overlay.PlayScreenCrack());
-        yield return SceneManager.LoadSceneAsync("TestBoard");
+        yield return SceneManager.LoadSceneAsync("CombatBoard");
         GameManager.instance.combat.CombatSetup(encounter);
         yield return StartCoroutine(fx.Overlay.FadeInScreen());
         GameManager.instance.combat.board.MouseLock = false;

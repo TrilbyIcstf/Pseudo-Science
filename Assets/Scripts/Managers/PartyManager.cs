@@ -27,6 +27,7 @@ public class PartyManager : MonoBehaviour
             player2 = Instantiate(player2);
             player3 = Instantiate(player3);
             player4 = Instantiate(player4);
+            ResetStatus();
             setupFinished = true;
         }
     }

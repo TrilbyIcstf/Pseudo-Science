@@ -85,7 +85,8 @@ public class Enemy_Visuals : MonoBehaviour
     public IEnumerator PlayDeathAnimation(GameManager.CallbackFunction callback)
     {
         GameObject DeathOverlay = Instantiate(deathMask, spriteObject.transform);
-        yield return new WaitForSeconds(0.0f);
+        turnNumber.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f);
         callback();
     }
 

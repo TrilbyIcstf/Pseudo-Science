@@ -27,7 +27,10 @@ public class Enemy_Turn_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        GameManager.instance.combat.combatUI.HideTextBox();
+        if (GameManager.instance.combat.combatUI != null)
+        {
+            GameManager.instance.combat.combatUI.HideTextBox();
+        }
     }
 
     public void SetTurnNumber(int val)

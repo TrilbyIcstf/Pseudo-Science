@@ -25,7 +25,10 @@ public class Combat_Move_Button : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        GameManager.instance.combat.combatUI.HideMoveDetails();
+        if (GameManager.instance.combat.combatUI != null)
+        {
+            GameManager.instance.combat.combatUI.HideMoveDetails();
+        }
     }
 
     public void SetDetails(PC player, MoveName move, int pos)

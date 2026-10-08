@@ -16,9 +16,9 @@ MonoBehaviour:
   enemyType: 9001
   levelStat: 5
   maxHealthStat: 950
-  attackStat: 22
+  attackStat: 20
   defenseStat: 12
-  magicStat: 32
+  magicStat: 24
   magDefenseStat: 22
   weakness: 0300000004000000
   strength: 06000000

@@ -58,6 +58,11 @@ public class CombatManager : MonoBehaviour
 
     public void CombatSetup(Encounter _enc)
     {
+        GameObject.FindGameObjectWithTag("BoardController").GetComponent<Board_Controller>().Setup();
+
+        combatUI = GameObject.FindGameObjectWithTag("CombatUI").GetComponent<Combat_UI>();
+        combatUI.Setup();
+
         board.MouseLock = true;
         energy = new Player_Energy();
         Transform enemyHolderPos = GameObject.FindGameObjectWithTag("EnemyHolder").transform;
@@ -78,6 +83,15 @@ public class CombatManager : MonoBehaviour
         }
 
         SetupMoves();
+
+        foreach (Player_UI_Controller controller in combatUI.PlayerUI)
+        {
+            if (GameManager.instance.party.GetPlayer(controller.Player).Status.IsDead)
+            {
+                controller.KILL();
+                controller.ReviveScript.RefreshBarFromSource();
+            }
+        }
     }
 
     private void SetupMoves()

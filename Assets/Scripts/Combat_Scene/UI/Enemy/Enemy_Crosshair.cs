@@ -12,9 +12,12 @@ public class Enemy_Crosshair : MonoBehaviour
     private float crosshairAlpha = 1.0f;
     private Image crosshairImage;
 
+    private bool setup = false;
+
     public void Setup()
     {
         crosshairImage = gameObject.GetComponent<Image>();
+        setup = true;
     }
 
     public void FixedUpdate()
@@ -27,6 +30,7 @@ public class Enemy_Crosshair : MonoBehaviour
 
     public void Update()
     {
+        if (!setup) { return; }
         UpdateScale();
     }
 
