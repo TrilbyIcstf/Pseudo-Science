@@ -2,13 +2,9 @@ using UnityEngine;
 
 public class Stained_Knight_Behavior : Behavior_Dad
 {
-    public override (GameObject, TargetingType, int, int, float) MakeMove()
+    public override int GenerateIntent(Enemy_Stats stats)
     {
-        step++;
-
-        EnemyMoveIntent currentIntent = intent;
-
-        int speed = 0;
+        int speed;
         switch (varient)
         {
             case 0 when step % 2 == 0:
@@ -24,26 +20,7 @@ public class Stained_Knight_Behavior : Behavior_Dad
             default: throw new System.NotImplementedException();
         }
 
-        GameObject moveObject = GameManager.instance.ll.enemyMoveRepository.GetValue(currentIntent.Move);
-
-        return (moveObject, currentIntent.TargetingType, currentIntent.Targets, speed, currentIntent.Potency);
-    }
-
-    public override int GenerateBaseIntent()
-    {
-        int speed = 0;
-        switch (varient)
-        {
-            case 0:
-                speed = 3;
-                intent = new EnemyMoveIntent(EnemyMoveName.BasicSlash, MoveType.PHYSICAL, TargetingType.LowestHealth, 1, 125);
-                break;
-            case 1:
-                speed = 6;
-                intent = new EnemyMoveIntent(EnemyMoveName.SparkBurst, MoveType.MAGICAL, TargetingType.LowestHealth, 2, 85);
-                break;
-            default: throw new System.NotImplementedException();
-        }
+        step++;
         return speed;
     }
 }

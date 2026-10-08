@@ -22,9 +22,18 @@ public abstract class Behavior_Dad : MonoBehaviour
     /// int: The new cooldown to set the enemy to
     /// float: The potency of the move
     /// </returns>
-    public abstract (GameObject, TargetingType, int, int, float) MakeMove();
+    public virtual (GameObject, TargetingType, int, int, float) MakeMove(Enemy_Stats stats)
+    {
+        EnemyMoveIntent currentIntent = intent;
 
-    public abstract int GenerateBaseIntent();
+        int speed = GenerateIntent(stats);
+
+        GameObject moveObject = GameManager.instance.ll.enemyMoveRepository.GetValue(currentIntent.Move);
+
+        return (moveObject, currentIntent.TargetingType, currentIntent.Targets, speed, currentIntent.Potency);
+    }
+
+    public abstract int GenerateIntent(Enemy_Stats stats);
 
     public virtual List<int> CustomTargeting()
     {

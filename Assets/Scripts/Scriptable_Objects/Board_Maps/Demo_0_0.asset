@@ -35,5 +35,5 @@ MonoBehaviour:
     - key: {x: 4, y: 0}
       value:
         mapPos: {x: 0, y: 0}
-        exitPos: {x: 0, y: 0}
-        dungeonExit: 1
+        exitPos: {x: 4, y: 1}
+        dungeonExit: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   mapImage: {fileID: 2800000, guid: 37a60780536b5b84bbf3c7f03d96bf28, type: 3}
   baseEnemies:
   - pos: {x: 3, y: 4}
-    encounter: {fileID: 11400000, guid: 7a6ce94ebfe6cb3469ff69bed9b073c7, type: 2}
+    encounter: {fileID: 11400000, guid: bcdd8207f68ff51418bd21f33d86acac, type: 2}
     piece: 1
   doorConnections:
     keyValuePairs:

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9b71efa7feffa74e9e99db0c3d37810, type: 3}
-  m_Name: Rat_Test
+  m_Name: Westminster_Boss
   m_EditorClassIdentifier: Assembly-CSharp::Encounter
   encounterContents:
-  - enemy: 1001
-    varient: 99
+  - enemy: 9001
+    varient: 0
   enemyPositions:
-  - {x: 0, y: 122.41}
+  - {x: 0, y: 145}

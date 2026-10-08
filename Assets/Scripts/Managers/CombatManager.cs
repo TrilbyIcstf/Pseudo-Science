@@ -385,7 +385,7 @@ public class CombatManager : MonoBehaviour
                     do
                     {
                         target = Random.Range(0, 4);
-                    } while (targets.Contains(target));
+                    } while (targets.Contains(target) || GameManager.instance.party.GetPlayer(target).Status.IsDead);
                     targets.Add(target);
                 }
                 break;
@@ -408,7 +408,8 @@ public class CombatManager : MonoBehaviour
 
                 if (activeEnemies[i].speed <= 0)
                 {
-                    (GameObject moveObject, TargetingType targetType, int targets, int cooldown, float potency) = activeEnemies[i].enemyBehavior.MakeMove();
+                    Enemy_Stats eStats = activeEnemies[i].enemyScript.GetStats();
+                    (GameObject moveObject, TargetingType targetType, int targets, int cooldown, float potency) = activeEnemies[i].enemyBehavior.MakeMove(eStats);
                     activeEnemies[i].speed = cooldown;
                     QueuedEnemyMove queuedMove = new QueuedEnemyMove(moveObject, i, targetType, targets, potency);
                     enemyMoveQueue.Enqueue(queuedMove);
@@ -649,7 +650,7 @@ public class CombatManager : MonoBehaviour
         {
             enemyScript.Setup(position, varient);
 
-            speed = enemyBehavior.GenerateBaseIntent();
+            speed = enemyBehavior.GenerateIntent(enemyScript.GetStats());
             enemyVisuals.SetTurnNumber(speed);
             enemyVisuals.SetIntent(enemyBehavior.IntentType);
             enemyVisuals.SetTurnEnemy(enemyScript.EnemyBase.EnemyType);
