@@ -15,7 +15,10 @@ public class DungeonManager : MonoBehaviour
     public Vector2Int Pos { get => pos; set => pos = value; }
     public SavedBoardState SavedBoard { set => savedBoard = value; }
 
-    private bool TESTMAPSETUP = false;
+    public void SetDungeon(Dungeon_Layout dungeon)
+    {
+        dungeonLayout = dungeon;
+    }
 
     public void BeginDungeon()
     {
@@ -25,11 +28,6 @@ public class DungeonManager : MonoBehaviour
 
     public void SetupDungeonBoard(Dungeon_Board_Controller board)
     {
-        if (!TESTMAPSETUP)
-        {
-            BeginDungeon();
-            TESTMAPSETUP = true;
-        }
         this.board = board;
         Dungeon_Board_Layout layout = dungeonLayout.Layout.GetValue(Pos);
 
