@@ -43,9 +43,9 @@ public class Enemy_Information : ScriptableObject
     public int Resistance { get => magDefenseStat; }
     public List<Element> Weakness { get => weakness; }
     public List<Element> Strength { get => strength; }
-    public string EnemyName { get => enemyName; set => enemyName = value; }
-    public Bestiary EnemyType { get => enemyType; set => enemyType = value; }
-    public Sprite EnemySprite { get => enemySprite; set => enemySprite = value; }
-    public Vector2 SpriteSize { get => spriteSize; set => spriteSize = value; }
-    public float HealthBarHeight { get => healthBarHeight; set => healthBarHeight = value; }
+    public string EnemyName { get => enemyName; }
+    public Bestiary EnemyType { get => enemyType; }
+    public Sprite EnemySprite { get => enemySprite; }
+    public Vector2 SpriteSize { get => spriteSize; }
+    public float HealthBarHeight { get => healthBarHeight; }
 }

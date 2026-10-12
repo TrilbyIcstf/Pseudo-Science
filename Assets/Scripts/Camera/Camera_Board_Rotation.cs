@@ -7,7 +7,7 @@ public class Camera_Board_Rotation : MonoBehaviour
 
     private const float rotateSpeed = 3.0f;
     private const float aVal = 1.0f / 10;
-    private const float bVal = -1.0f / 7;
+    private const float bVal = -1.0f / 9;
 
     private float dist = 12.2f;
 
@@ -19,6 +19,8 @@ public class Camera_Board_Rotation : MonoBehaviour
         Vector3 angles = transform.eulerAngles;
         xRot = angles.x;
         yRot = angles.y;
+
+        PositionCamera();
     }
 
     private void LateUpdate()
@@ -28,16 +30,23 @@ public class Camera_Board_Rotation : MonoBehaviour
         if (scrollDelta > 0 && dist > 6.0f)
         {
             dist -= 0.4f;
-        } else if (scrollDelta < 0 && dist < 16.0f)
+            PositionCamera();
+        } else if (scrollDelta < 0 && dist < 18.0f)
         {
             dist += 0.4f;
+            PositionCamera();
         }
 
         if (Input.GetMouseButton(1))
         {
             yRot += Input.GetAxis("Mouse X") * rotateSpeed;
-        }
 
+            PositionCamera();
+        }
+    }
+
+    private void PositionCamera()
+    {
         if (center != null)
         {
             Quaternion rot = Quaternion.Euler(0, yRot, 0);
@@ -45,6 +54,7 @@ public class Camera_Board_Rotation : MonoBehaviour
             Vector3 pos = rot * new Vector3(0, aVal * UVal(dist), bVal * UVal(dist)) + center.position;
             transform.position = pos;
             transform.rotation = Quaternion.Euler(xRot, yRot, 0);
+            //transform.LookAt(center);
         }
     }
 

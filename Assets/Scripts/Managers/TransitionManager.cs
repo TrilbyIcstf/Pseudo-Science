@@ -41,4 +41,28 @@ public class TransitionManager : MonoBehaviour
         yield return SceneManager.LoadSceneAsync("DungeonBoardBasic");
         yield return StartCoroutine(fx.Overlay.FadeInScreen());
     }
+
+    public void TransitionToGameOver()
+    {
+        StartCoroutine(TransitionToGameOverCoroutine());
+    }
+
+    private IEnumerator TransitionToGameOverCoroutine()
+    {
+        yield return StartCoroutine(fx.Overlay.FadeOutScreen());
+        yield return SceneManager.LoadSceneAsync("GameOver");
+        yield return StartCoroutine(fx.Overlay.FadeInScreen());
+    }
+
+    public void TransitionToWin()
+    {
+        StartCoroutine(TransitionToWinCoroutine());
+    }
+
+    private IEnumerator TransitionToWinCoroutine()
+    {
+        yield return StartCoroutine(fx.Overlay.FadeOutScreen());
+        yield return SceneManager.LoadSceneAsync("Win");
+        yield return StartCoroutine(fx.Overlay.FadeInScreen());
+    }
 }

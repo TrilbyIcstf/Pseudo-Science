@@ -55,6 +55,7 @@ public class CombatManager : MonoBehaviour
     private int highestMoveCombo = 0;
 
     private int turnCount = 0;
+    private bool isBoss = false;
 
     public void CombatSetup(Encounter _enc)
     {
@@ -66,6 +67,8 @@ public class CombatManager : MonoBehaviour
         board.MouseLock = true;
         energy = new Player_Energy();
         Transform enemyHolderPos = GameObject.FindGameObjectWithTag("EnemyHolder").transform;
+
+        isBoss = _enc.IsBoss;
 
         for (int i = 0; i < _enc.EncounterEnemies.Count; i++)
         {
@@ -114,7 +117,13 @@ public class CombatManager : MonoBehaviour
     public void CombatVictory()
     {
         CombatCleanup();
-        GameManager.instance.transition.TransitionToNewRoom();
+        if (isBoss)
+        {
+            GameManager.instance.transition.TransitionToWin();
+        } else
+        {
+            GameManager.instance.transition.TransitionToNewRoom();
+        }
     }
 
     public void CombatCleanup()
@@ -251,6 +260,11 @@ public class CombatManager : MonoBehaviour
     {
         CountDownStatus();
         turnCount++;
+
+        if (GameManager.instance.party.LivingPlayers() == 0)
+        {
+            GameManager.instance.transition.TransitionToGameOver();
+        }
     }
 
     private IEnumerator RunQueue()

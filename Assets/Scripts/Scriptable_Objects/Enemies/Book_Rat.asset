@@ -20,8 +20,8 @@ MonoBehaviour:
   defenseStat: 5
   magicStat: 25
   magDefenseStat: 5
-  weakness: 0200000006000000
-  strength: 0300000005000000
+  weakness: 020000000600000005000000
+  strength: 0300000004000000
   enemySprite: {fileID: 21300000, guid: e195fc2698542374daafdfef9e185451, type: 3}
   spriteSize: {x: 141, y: 145}
   healthBarHeight: 25

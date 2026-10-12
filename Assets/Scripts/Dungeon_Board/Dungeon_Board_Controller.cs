@@ -19,6 +19,10 @@ public class Dungeon_Board_Controller : MonoBehaviour
 
     private GameObject playerPiece;
 
+    private float basePlayerHeight;
+    private float playerHeight = 0.0f;
+    private Coroutine playerMovementTracker;
+
     private List<DungeonEnemy> enemyPieces = new List<DungeonEnemy>();
 
     private DungeonBoardState boardState = DungeonBoardState.Neutral;
@@ -37,10 +41,7 @@ public class Dungeon_Board_Controller : MonoBehaviour
         ResetTileInteraction();
 
         playerPos = playerStart;
-        playerPiece = generator.GeneratePlayer();
-        PositionPlayerPiece();
-        TileMap(playerPos).TileScript.Interactable = true;
-
+        InitPlayer();
 
         foreach (DungeonEnemy enemy in layout.BaseEnemies)
         {
@@ -57,16 +58,21 @@ public class Dungeon_Board_Controller : MonoBehaviour
         ResetTileInteraction();
 
         playerPos = state.PlayerPos;
-        playerPiece = generator.GeneratePlayer();
-        PositionPlayerPiece();
-        TileMap(playerPos).TileScript.Interactable = true;
-
+        InitPlayer();
 
         foreach (DungeonEnemy enemy in state.Enemies)
         {
             enemyPieces.Add(generator.GenerateEnemy(enemy.Pos, enemy.Encounter, enemy.Piece));
         }
         PositionEnemyPieces();
+    }
+
+    private void InitPlayer()
+    {
+        playerPiece = generator.GeneratePlayer();
+        PositionPlayerPiece();
+        basePlayerHeight = playerPiece.transform.position.y;
+        TileMap(playerPos).TileScript.Interactable = true;
     }
 
     private bool ShouldBeginEncounter()
@@ -93,7 +99,17 @@ public class Dungeon_Board_Controller : MonoBehaviour
                 SetupPlayerMovement();
                 break;
             case DungeonBoardState.PlayerSelectingMovement:
-                MovePlayer(tilePos);
+                StartCoroutine(MovePlayer(tilePos));
+                break;
+        }
+    }
+
+    public void HoverTile(Vector2Int tilePos)
+    {
+        switch(boardState)
+        {
+            case DungeonBoardState.PlayerSelectingMovement:
+                HoverPlayerPiece(tilePos);
                 break;
         }
     }
@@ -108,30 +124,75 @@ public class Dungeon_Board_Controller : MonoBehaviour
             TileMap(pos).TileScript.Interactable = true;
         }
         Vector3 playerPiecePos = playerPiece.transform.position;
-        playerPiecePos.y += 0.3f;
+
+        if (playerMovementTracker != null)
+        {
+            StopCoroutine(playerMovementTracker);
+        }
+        playerMovementTracker = StartCoroutine(RaisePlayer());
         playerPiece.transform.position = playerPiecePos;
     }
 
-    private void MovePlayer(Vector2Int pos)
+    private IEnumerator RaisePlayer()
+    {
+        yield return new WaitUntil(() =>
+        {
+            playerHeight += Time.deltaTime * 2.0f;
+            Vector3 pos = playerPiece.transform.position;
+            pos.y = basePlayerHeight + playerHeight;
+            playerPiece.transform.position = pos;
+
+            return playerHeight >= 0.3f;
+        });
+    }
+
+    private IEnumerator LowerPlayer()
+    {
+        yield return new WaitUntil(() =>
+        {
+            playerHeight -= Time.deltaTime * 3.0f;
+            Vector3 pos = playerPiece.transform.position;
+            pos.y = basePlayerHeight + playerHeight;
+            playerPiece.transform.position = pos;
+
+            return playerHeight <= 0.0f;
+        });
+
+        PositionPlayerPiece();
+    }
+
+    private IEnumerator MovePlayer(Vector2Int pos)
     {
         ResetTileInteraction();
+        bool moved = playerPos != pos;
         playerPos = pos;
-        PositionPlayerPiece();
 
-        if (ShouldBeginEncounter())
+        if (playerMovementTracker != null)
         {
-            BeginEncounter();
-        } else if (doorTiles.ContainsKey(playerPos))
+            StopCoroutine(playerMovementTracker);
+        }
+        yield return playerMovementTracker = StartCoroutine(LowerPlayer());
+
+        if (moved)
         {
-            DoorConnection dc = doorTiles.GetValue(playerPos);
-            if (dc.DungeonExit)
+            if (ShouldBeginEncounter())
             {
-                Application.Quit();
+                BeginEncounter();
+            } else if (doorTiles.ContainsKey(playerPos))
+            {
+                DoorConnection dc = doorTiles.GetValue(playerPos);
+                if (dc.DungeonExit)
+                {
+                    Application.Quit();
+                }
+                GameManager.instance.dungeon.MoveThroughDoor(dc);
+            } else
+            {
+                StartCoroutine(MoveEnemies());
             }
-            GameManager.instance.dungeon.MoveThroughDoor(dc);
         } else
         {
-            StartCoroutine(MoveEnemies());
+            ResetToNeutral();
         }
     }
 
@@ -191,14 +252,20 @@ public class Dungeon_Board_Controller : MonoBehaviour
         } else
         {
             PositionEnemyPieces();
-            boardState = DungeonBoardState.Neutral;
-            TileMap(playerPos).TileScript.Interactable = true;
+            ResetToNeutral();
         }
+    }
+
+    private void ResetToNeutral()
+    {
+        boardState = DungeonBoardState.Neutral;
+        TileMap(playerPos).TileScript.Interactable = true;
     }
 
     public HashSet<Vector2Int> QueenMovementOptions(Vector2Int pos, bool isEnemy = true)
     {
         HashSet<Vector2Int> options = new HashSet<Vector2Int>();
+        if (!isEnemy) { options.Add(pos); }
         for (int x = -1; x <= 1; x++)
         {
             for (int y = -1; y <= 1; y++)
@@ -453,7 +520,6 @@ public class Dungeon_Board_Controller : MonoBehaviour
         }
 
         return floorTiles.Contains(pos);
-        //return tileMap[pos.x, pos.y].Type == DungeonTileType.FLOOR;
     }
 
     public DungeonEnemy GetEnemyAt(Vector2Int pos)
@@ -479,6 +545,13 @@ public class Dungeon_Board_Controller : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void HoverPlayerPiece(Vector2Int pos)
+    {
+        Vector3 queenPos = TileMap(pos).Tile.transform.position;
+        queenPos.y = playerPiece.transform.position.y;
+        playerPiece.transform.position = queenPos;
     }
 
     private void PositionPlayerPiece()

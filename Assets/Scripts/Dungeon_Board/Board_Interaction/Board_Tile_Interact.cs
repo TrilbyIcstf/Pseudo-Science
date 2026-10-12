@@ -36,7 +36,8 @@ public class Board_Tile_Interact : MonoBehaviour
         if (interactable)
         {
             TileRenderer.material.color = hoverColor;
-            
+
+            GameManager.instance.dungeon.Board.HoverTile(pos);
         }
     }
 

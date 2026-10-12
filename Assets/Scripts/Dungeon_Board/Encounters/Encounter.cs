@@ -19,9 +19,14 @@ public class Encounter : ScriptableObject
     [SerializeField] 
     private List<Vector2> enemyPositions;
 
+    // If the encounter is a boss
+    [SerializeField]
+    private bool isBoss;
+
     public List<Bestiary> EncounterEnemies { get => encounterContents.Select(e => e.enemy).ToList(); }
     public List<int> EnemyVarients { get => encounterContents.Select(e => e.varient).ToList(); }
     public List<Vector2> EnemyPositions { get => enemyPositions; }
+    public bool IsBoss { get => isBoss; }
 
     [Serializable]
     private struct EnemyTuple
