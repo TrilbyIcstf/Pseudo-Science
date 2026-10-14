@@ -22,8 +22,10 @@ MonoBehaviour:
   blackWallTiles:
   - {fileID: 2628768367070319677, guid: 3e19153a72c4d79428a468033e793a8b, type: 3}
   - {fileID: 936764116428764518, guid: 95e566532315d7c40aefcd5819c1453c, type: 3}
-  whiteDoorTiles: []
-  blackDoorTiles: []
+  whiteDoorTiles:
+  - {fileID: 254296420424076427, guid: 13f882e76267c5742911e3c459fbfc83, type: 3}
+  blackDoorTiles:
+  - {fileID: 8422396201738557021, guid: a0f98319f0de08540af27d7a93e544c2, type: 3}
   emptyFloorTile: {fileID: 6826849867174056081, guid: 0911be665ca9d6542866a6947854efb5, type: 3}
   blackChessPieces:
     keyValuePairs:
