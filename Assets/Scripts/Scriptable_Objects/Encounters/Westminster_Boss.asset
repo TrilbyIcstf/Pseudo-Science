@@ -17,3 +17,4 @@ MonoBehaviour:
     varient: 0
   enemyPositions:
   - {x: 0, y: 145}
+  isBoss: 1

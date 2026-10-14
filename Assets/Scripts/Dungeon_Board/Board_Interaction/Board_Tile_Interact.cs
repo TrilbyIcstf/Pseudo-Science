@@ -35,7 +35,8 @@ public class Board_Tile_Interact : MonoBehaviour
         hovered = true;
         if (interactable)
         {
-            TileRenderer.material.color = hoverColor;
+            //TileRenderer.material.color = hoverColor;
+            SetColor(hoverColor);
 
             GameManager.instance.dungeon.Board.HoverTile(pos);
         }
@@ -47,10 +48,12 @@ public class Board_Tile_Interact : MonoBehaviour
         {
             if (highlighted)
             {
-                TileRenderer.material.color = highlightColor;
+                //TileRenderer.material.color = highlightColor;
+                SetColor(highlightColor);
             } else
             {
-                TileRenderer.material.color = baseColor;
+                //TileRenderer.material.color = baseColor;
+                SetColor(baseColor);
             }
             hovered = false;
         }
@@ -67,18 +70,28 @@ public class Board_Tile_Interact : MonoBehaviour
     public void HighlightTile()
     {
         highlighted = true;
-        TileRenderer.material.color = highlightColor;
+        //TileRenderer.material.color = highlightColor;
+        SetColor(highlightColor);
     }
 
     public void UnhighlightTile()
     {
         highlighted = false;
-        TileRenderer.material.color = baseColor;
+        //TileRenderer.material.color = baseColor;
+        SetColor(baseColor);
     }
 
     public float HalfHeight()
     {
         return GetComponent<MeshFilter>().sharedMesh.bounds.size.y / 2 * transform.localScale.y;
+    }
+
+    private void SetColor(Color color)
+    {
+        foreach (Material mat in TileRenderer.materials)
+        {
+            mat.color = color;
+        }
     }
 
     private Renderer TileRenderer
