@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5940580280799815302}
   - component: {fileID: 4889158081181497553}
   - component: {fileID: 3194700390772604750}
+  - component: {fileID: 2751868736208423478}
   m_Layer: 0
   m_Name: Black_Tile
   m_TagString: Untagged
@@ -132,3 +133,15 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 1}
   highlightColor: {r: 0.5188679, g: 0.47918135, b: 0.070977226, a: 1}
   hoverColor: {r: 0.78431374, g: 0.7176471, b: 0, a: 1}
+--- !u!114 &2751868736208423478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2787619967430298613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e96ff530e82cdb4faddad06b231d61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tile_Highlight_Handler

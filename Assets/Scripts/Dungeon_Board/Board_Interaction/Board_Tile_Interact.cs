@@ -35,8 +35,7 @@ public class Board_Tile_Interact : MonoBehaviour
         hovered = true;
         if (interactable)
         {
-            //TileRenderer.material.color = hoverColor;
-            SetColor(hoverColor);
+            GetComponent<Tile_Highlight_Handler>().SetHover();
 
             GameManager.instance.dungeon.Board.HoverTile(pos);
         }
@@ -48,12 +47,10 @@ public class Board_Tile_Interact : MonoBehaviour
         {
             if (highlighted)
             {
-                //TileRenderer.material.color = highlightColor;
-                SetColor(highlightColor);
+                GetComponent<Tile_Highlight_Handler>().SetHighlight();
             } else
             {
-                //TileRenderer.material.color = baseColor;
-                SetColor(baseColor);
+                GetComponent<Tile_Highlight_Handler>().SetNone();
             }
             hovered = false;
         }
@@ -70,15 +67,13 @@ public class Board_Tile_Interact : MonoBehaviour
     public void HighlightTile()
     {
         highlighted = true;
-        //TileRenderer.material.color = highlightColor;
-        SetColor(highlightColor);
+        GetComponent<Tile_Highlight_Handler>().SetHighlight();
     }
 
     public void UnhighlightTile()
     {
         highlighted = false;
-        //TileRenderer.material.color = baseColor;
-        SetColor(baseColor);
+        GetComponent<Tile_Highlight_Handler>().SetNone();
     }
 
     public float HalfHeight()

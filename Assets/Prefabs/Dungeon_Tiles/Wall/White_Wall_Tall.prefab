@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 5095887341449249169}
   - component: {fileID: 2759492828780440557}
   - component: {fileID: 1499627623061007242}
+  - component: {fileID: -3354228987369994914}
   m_Layer: 0
   m_Name: White_Wall_Tall
   m_TagString: Untagged
@@ -244,3 +245,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.3, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3354228987369994914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7556627897057410170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e96ff530e82cdb4faddad06b231d61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tile_Highlight_Handler

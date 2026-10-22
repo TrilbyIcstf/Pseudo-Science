@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7577241209793918239}
   - component: {fileID: 6242857744878919980}
   - component: {fileID: 4291848145597971993}
+  - component: {fileID: 6778267433984904980}
   - component: {fileID: 7107198026693671573}
   m_Layer: 0
   m_Name: Black_Door
@@ -111,6 +112,18 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 1}
   highlightColor: {r: 0.9245283, g: 0.88341874, b: 0.48406905, a: 1}
   hoverColor: {r: 0.7830189, g: 0.7191858, b: 0, a: 1}
+--- !u!114 &6778267433984904980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422396201738557021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e96ff530e82cdb4faddad06b231d61f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tile_Highlight_Handler
 --- !u!65 &7107198026693671573
 BoxCollider:
   m_ObjectHideFlags: 0
