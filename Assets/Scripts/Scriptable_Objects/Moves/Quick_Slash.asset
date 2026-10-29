@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 1
   element: 2
   potency: 75
-  manaCost: 30
+  manaCost: 20
   description: Deals weak slash damage to the target.

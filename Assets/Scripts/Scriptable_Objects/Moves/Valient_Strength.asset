@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 4
   element: 0
   potency: 7
-  manaCost: 25
+  manaCost: 15
   description: Gives a small damage boost to all party members.

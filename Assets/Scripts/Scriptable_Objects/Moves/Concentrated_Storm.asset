@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 2
   element: 7
   potency: 150
-  manaCost: 50
+  manaCost: 35
   description: Deals moderate air damage to target enemy.

@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 2
   element: 6
   potency: 85
-  manaCost: 30
+  manaCost: 20
   description: Deals minor fire damage to target enemy.

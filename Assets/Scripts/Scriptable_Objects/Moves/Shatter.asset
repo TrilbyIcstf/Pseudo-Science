@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 1
   element: 1
   potency: 300
-  manaCost: 95
+  manaCost: 65
   description: Deals heavy blunt damage with a large mana cost.

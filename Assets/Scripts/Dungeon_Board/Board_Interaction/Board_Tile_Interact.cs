@@ -2,15 +2,6 @@ using UnityEngine;
 
 public class Board_Tile_Interact : MonoBehaviour
 {
-    [SerializeField]
-    private Color baseColor;
-
-    [SerializeField]
-    private Color highlightColor;
-
-    [SerializeField]
-    private Color hoverColor = Color.yellowNice;
-
     private Vector2Int pos;
 
     private Renderer tileRenderer;

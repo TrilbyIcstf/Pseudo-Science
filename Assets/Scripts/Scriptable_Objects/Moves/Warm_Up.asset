@@ -16,6 +16,6 @@ MonoBehaviour:
   moveEnum: 1801
   type: 4
   element: 0
-  potency: 15
-  manaCost: 25
-  description: Increases Samantha's energy gain a good number of turns.
+  potency: 20
+  manaCost: 20
+  description: Increases energy gain for a good number of turns.

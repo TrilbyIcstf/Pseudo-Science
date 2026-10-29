@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 2
   element: 5
   potency: 75
-  manaCost: 65
+  manaCost: 45
   description: Deals minor earth damage to all enemies.

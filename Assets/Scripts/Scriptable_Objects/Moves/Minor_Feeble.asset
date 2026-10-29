@@ -16,6 +16,6 @@ MonoBehaviour:
   moveEnum: 1902
   type: 5
   element: 9
-  potency: 15
-  manaCost: 35
+  potency: 10
+  manaCost: 15
   description: Reduces the target's damage by a small amount.
